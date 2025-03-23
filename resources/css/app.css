@@ -20,3 +20,8 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+/* Over-ride wp inline-css defaults */
+a {
+  text-decoration: inherit;
+}
