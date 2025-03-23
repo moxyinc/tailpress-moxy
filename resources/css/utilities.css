@@ -27,3 +27,32 @@
 @utility aligncenter {
     margin: 0.5rem auto !important;
 }
+
+/* Return the original Tailwind padding settings */
+
+@theme {
+    --container-padding: 1rem;
+    --container-padding-sm: 2rem;
+    --container-padding-lg: 2rem;
+  }
+
+  @layer utilities {
+    .container {
+      padding-left: var(--container-padding);
+      padding-right: var(--container-padding);
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding-left: var(--container-padding-sm);
+        padding-right: var(--container-padding-sm);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: var(--container-padding-lg);
+        padding-right: var(--container-padding-lg);
+      }
+    }
+  }
