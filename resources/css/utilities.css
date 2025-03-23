@@ -1,5 +1,7 @@
-@utility container {
-    max-width: var(--wp--style--global--wide-size);
+@layer utilities {
+    :root .container {
+        max-width: var(--wp--style--global--wide-size);
+    }
 }
 
 @utility alignfull {
