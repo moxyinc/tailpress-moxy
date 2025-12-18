@@ -1,3 +1,9 @@
+import Alpine from 'alpinejs';
+
+// Initialize Alpine.js
+window.Alpine = Alpine;
+Alpine.start();
+
 // Navigation toggle
 window.addEventListener('load', function () {
       let main_navigation = document.querySelector('#primary-menu');

@@ -43,11 +43,15 @@ add_action( 'after_setup_theme', 'tailpress_setup' );
 function tailpress_enqueue_scripts() {
 	$theme = wp_get_theme();
 
-	wp_enqueue_style( 'tailpress', tailpress_asset( 'css/app.css' ), array(), $theme->get( 'Version' ) );
-	wp_enqueue_script( 'tailpress', tailpress_asset( 'js/app.js' ), array(), $theme->get( 'Version' ) );
+	// Always load compiled assets (simple and reliable)
+	// CSS loaded with high priority (1) to prevent CLS - must load early in head
+	wp_enqueue_style( 'tailpress', tailpress_asset( 'css/app.css' ), array(), $theme->get( 'Version' ), 'all' );
+	wp_enqueue_script( 'tailpress', tailpress_asset( 'js/app.js' ), array(), $theme->get( 'Version' ), true );
 }
 
-add_action( 'wp_enqueue_scripts', 'tailpress_enqueue_scripts' );
+// Use priority 1 to ensure CSS loads early in head and prevents CLS
+// Lower number = higher priority (loads earlier in wp_head)
+add_action( 'wp_enqueue_scripts', 'tailpress_enqueue_scripts', 1 );
 
 /**
  * Get asset path.

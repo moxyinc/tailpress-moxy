@@ -1,0 +1,138 @@
+# Starter Theme - Cursor Rules
+
+## Theme Context
+This is Starter Theme, a WordPress theme built on TailPress with custom modifications.
+
+## Technology Stack
+- WordPress (traditional theme, not FSE)
+- TailPress theme framework
+- Tailwind CSS 4.0 (uses new @import 'tailwindcss' syntax)
+- Alpine.js
+- Laravel Mix for asset compilation
+
+**Important:** `tailwind.config.js` exists ONLY for the Tailwind Raw Reorder extension. Tailwind 4.0 does not use this file. NEVER write to or modify tailwind.config.js.
+
+## Theme Structure
+- Traditional PHP template hierarchy
+- Theme.json for WordPress color/typography settings
+- Custom header.php with homepage content
+- TailPress standards compliance
+
+## Max Mega Menu Integration
+
+### Plugin Compatibility
+- Max Mega Menu Pro recommended for advanced features
+- Compatible with theme location 'primary' menu
+- Integrates with Alpine.js navigation toggle
+- Uses theme.json color palette
+
+### Development Guidelines
+- Never add Full Site Editing (FSE) support to this theme
+- Maintain TailPress traditional theme structure
+- Use existing color palette from theme.json for menu styling
+- Test compatibility with Alpine.js navigation functions
+
+### Menu Configuration
+- Menu location: 'primary' (defined in functions.php)
+- Mobile toggle button ID: 'primary-menu-toggle'
+- Navigation container ID: 'primary-menu'
+- CSS classes compatible with Max Mega Menu styling
+
+### Common Tasks
+- Theme styling modifications: Edit CSS in resources/css/ or use Tailwind classes
+- Color changes: Modify theme.json palette
+- Menu styling: Use theme.json colors with Max Mega Menu settings
+- Asset compilation: Run `npm run production` after changes
+
+## Code Standards
+- Follow WordPress coding standards
+- Use TailPress naming conventions
+- Alpine.js for interactive elements
+- Tailwind CSS utility classes
+- Traditional WordPress hooks and filters
+
+## Code Formatting Issues & Prevention
+**CRITICAL:** Code formatters (Prettier, PHP CS Fixer, etc.) can break PHP string concatenation by removing concatenation operators (`.`)
+
+### Known Problem Areas:
+- String concatenation in PHP: `' class="' . esc_attr($var)"'` → formatters may remove the `.` operators
+- This causes fatal PHP syntax errors: "unexpected double-quote mark"
+
+### Prevention Strategies:
+1. **Use sprintf() instead of concatenation** when possible:
+   ```php
+   // Instead of: ' class="' . esc_attr($class_names)"'
+   // Use: sprintf(' class="%s"', esc_attr($class_names))
+   ```
+
+2. **Disable auto-formatting for PHP files** in editor settings:
+   ```json
+   "[php]": {
+       "editor.formatOnSave": false
+   }
+   ```
+
+3. **Always test PHP syntax** after any automated formatting
+4. **Be extra careful** with string concatenation in PHP files
+
+## Styling Approach
+- **ALWAYS prefer Tailwind utility classes over custom CSS**
+- Use Tailwind's `!` important modifier (e.g., `!no-underline`) when needed to override styles
+- Only write custom CSS in resources/css/custom.css when truly necessary
+- Avoid over-engineering with complex CSS selectors when utilities can solve the problem
+- This is a Tailwind-first theme - keep it that way
+
+## Max Mega Menu Benefits
+**Pro Version Features:**
+- Custom Fonts integration with theme colors
+- Accordion Menu for mobile-friendly navigation
+- Flyout Menus for traditional dropdown patterns
+- Custom Item Styling with CSS classes
+- Image Swap capabilities
+- Block and Shortcode support `[maxmegamenu]`
+- JavaScript API for advanced interactions
+
+## File Modifications
+- header.php: Contains homepage content and navigation
+- theme.json: Color palette and typography settings
+- functions.php: Theme setup and menu registration
+- resources/js/app.js: Alpine.js and navigation toggle
+- Never modify TailPress core functionality
+- Maintain traditional theme structure
+
+## Max Mega Menu Integration
+
+### Plugin Compatibility
+- Max Mega Menu Pro recommended for advanced features
+- Compatible with theme location 'primary' menu
+- Integrates with Alpine.js navigation toggle
+- Uses theme.json color palette
+
+### Development Guidelines
+- Never add Full Site Editing (FSE) support to this theme
+- Maintain TailPress traditional theme structure
+- Use existing color palette from theme.json for menu styling
+- Test compatibility with Alpine.js navigation functions
+
+### Menu Configuration
+- Menu location: 'primary' (defined in functions.php)
+- Mobile toggle button ID: 'primary-menu-toggle'
+- Navigation container ID: 'primary-menu'
+- CSS classes compatible with Max Mega Menu styling
+
+### Common Tasks
+- Theme styling modifications: Edit CSS in resources/css/ or use Tailwind classes
+- Color changes: Modify theme.json palette
+- Menu styling: Use theme.json colors with Max Mega Menu settings
+- Asset compilation: Run `npm run production` after changes
+
+## Max Mega Menu Benefits
+**Pro Version Features:**
+- Custom Fonts integration with theme colors
+- Accordion Menu for mobile-friendly navigation
+- Flyout Menus for traditional dropdown patterns
+- Custom Item Styling with CSS classes
+- Image Swap capabilities
+- Block and Shortcode support `[maxmegamenu]`
+- JavaScript API for advanced interactions
+
